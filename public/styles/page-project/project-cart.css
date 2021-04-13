@@ -1,0 +1,15 @@
+.project-cart {
+  background-color: #F2F2F2;
+}
+
+.project-cart__image-wrapper {
+  height: auto;
+  margin: 8px;
+}
+
+.project-cart__image {
+  height: auto;
+  width: 100%;
+}
+
+/*# sourceMappingURL=project-cart.css.map */

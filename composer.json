@@ -1,0 +1,9 @@
+{
+  "autoload": {
+    "psr-4": {
+      "ictis_portfolio\\": "vendor/ictis_portfolio/core",
+      "app\\": "app"
+    }
+  },
+  "require": {}
+}

@@ -1,0 +1,37 @@
+.project-tabs {}
+
+.tabs-triggers {
+  display: flex;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabs-triggers__item {
+  text-align: center;
+  color: black;
+  background-color: #F2F2F2;
+  white-space: nowrap;
+  text-decoration: none;
+  flex-grow: 1;
+  padding: 15px;
+}
+
+.tabs-triggers__item--active {
+  background: none;
+  border-top: 3px solid #2D4262;
+  padding-top: 12px;
+}
+
+.tabs-content {
+  margin-top: 20px;
+}
+
+.tabs-content__item {
+  display: none;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.tabs-content__item--active {
+  display: block;
+}

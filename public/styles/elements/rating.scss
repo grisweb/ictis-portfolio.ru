@@ -1,0 +1,47 @@
+.rating {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.rating__body {
+  font-family: UnioWeb_font-icons;
+  color: #c4c4c4;
+  position: relative;
+
+  &::before {
+    content: "\e900\e900\e900\e900\e900";
+    display: block;
+  }
+}
+
+.rating__active {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  &:before {
+    content: "\e900\e900\e900\e900\e900";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: #ffc800;
+  }
+}
+
+.rating__num-reviews {
+  margin-left: 8px;
+  line-height: 1;
+  padding-top: 4px;
+}
+
+.rating__num-rating {
+  margin-left: 8px;
+  line-height: 1;
+  font-weight: 400;
+  color: #ffc800;
+}

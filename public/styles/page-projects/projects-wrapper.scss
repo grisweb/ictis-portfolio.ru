@@ -1,0 +1,43 @@
+.projects-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.projects-wrapper__sidebar {
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding-right: 15px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.projects-wrapper__projects-list {
+  flex: 0 0 75%;
+  max-width: 75%;
+  padding-left: 15px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1200px) {
+  .projects-wrapper__sidebar {
+    padding-right: 10px;
+  }
+
+  .projects-wrapper__projects-list {
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .projects-wrapper__sidebar {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .projects-wrapper__projects-list {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 0;
+  }
+}

@@ -1,0 +1,17 @@
+.best-projects__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.best-projects__item {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 900px) {
+  .best-projects__list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+}

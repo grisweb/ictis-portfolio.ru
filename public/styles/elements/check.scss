@@ -1,0 +1,48 @@
+.check {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  padding-left: 25px;
+  user-select: none;
+}
+
+.check__input {
+  position: absolute;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  &:focus + .check__box {
+    border: 1px solid #999;
+  }
+
+  &:checked + .check__box {
+    background-color: #2D4262;
+    .check__icon {
+      display: block;
+    }
+  }
+}
+
+.check__box {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #e8e8e8;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  border-radius: 3px;
+  transition: background-color .2s ease-in-out,border .2s ease-in-out;
+
+  &:focus {
+    outline: 2px solid #e8e8e8;
+  }
+
+  .check__icon {
+    display: none;
+    margin: 1px auto 0;
+  }
+}

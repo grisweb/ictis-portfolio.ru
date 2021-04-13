@@ -1,0 +1,40 @@
+.project-block--small .project-block__image-wrapper {
+  height: 310px;
+  margin: 8px;
+}
+.project-block--small .project-block__image {
+  width: 248px;
+  height: 310px;
+}
+.project-block--small .project-block__content-wrapper {
+  margin: 8px;
+  max-height: 310px;
+}
+.project-block--small .project-block__name {
+  margin: 12px 0 8px;
+  font-size: 20px;
+}
+.project-block--small .project-block__description {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+.project-block--small .project-block__type-project {
+  margin: 15px 0;
+  font-size: 15px;
+}
+
+@media (max-width: 1200px) {
+  .project-block--small .project-block__image-wrapper {
+    height: 275px;
+    margin: 8px;
+  }
+  .project-block--small .project-block__image {
+    width: 220px;
+    height: 275px;
+  }
+}
+
+/*# sourceMappingURL=project-block--small.css.map */

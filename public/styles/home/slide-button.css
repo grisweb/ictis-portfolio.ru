@@ -1,0 +1,47 @@
+.slide-button {
+  background: none;
+  box-sizing: content-box;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  width: 60px;
+}
+.slide-button:active, .slide-button:focus {
+  outline: none;
+}
+.slide-button svg {
+  width: 36px;
+  height: 36px;
+}
+.slide-button svg path {
+  stroke: rgba(255, 255, 255, 0.2);
+}
+.slide-button:hover svg path {
+  animation-name: aiming;
+  animation-duration: 0.4s;
+  stroke: white;
+}
+
+@keyframes aiming {
+  from {
+    stroke: rgba(255, 255, 255, 0.2);
+  }
+  to {
+    stroke: white;
+  }
+}
+.slide-button--prev {
+  left: 0;
+}
+.slide-button--prev svg {
+  transform: rotate(90deg);
+}
+
+.slide-button--next {
+  right: 0;
+}
+.slide-button--next svg {
+  transform: rotate(-90deg);
+}
+
+/*# sourceMappingURL=slide-button.css.map */

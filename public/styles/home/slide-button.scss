@@ -1,0 +1,121 @@
+.slide-button {
+  position: absolute;
+  width: 60px;
+  height: 100%;
+  top: 0;
+  background: none;
+  box-sizing: content-box;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  z-index: 1;
+
+  &:active, &:focus{
+    outline: none;
+  }
+
+  svg {
+    width: 36px;
+    height: 36px;
+
+    path {
+      stroke: white;
+      opacity: 0.2;
+    }
+  }
+
+  &:hover {
+    svg path {
+      animation-name: aiming;
+      animation-duration: .4s;
+      opacity: 1;
+    }
+  }
+}
+
+.slide-button--gray {
+  svg path {
+    stroke: gray;
+    opacity: 0.7;
+  }
+
+  &:hover {
+    svg path {
+      animation-name: aiming--gray;
+    }
+  }
+}
+
+@keyframes aiming {
+  from{
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes aiming--gray {
+  from{
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-button--gray.slick-disabled {
+  svg path {
+    opacity: 0.3;
+  }
+  &:hover {
+    cursor: revert;
+    svg path {
+      opacity: 0.3;
+      animation-name: none;
+    }
+  }
+}
+
+.slide-button--prev {
+  left: 0;
+
+  svg {
+    transform: rotate(90deg);
+  }
+}
+
+.slide-button--next {
+  right: 0;
+
+  svg {
+    transform: rotate(-90deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .slide-button {
+    width: 45px;
+  }
+}
+
+@media (max-width: 560px) {
+  .slide-button {
+    width: 32px;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .slide-button--prev.slide-button--gray {
+    left: -15px;
+  }
+
+  .slide-button--next.slide-button--gray {
+    right: -15px;
+  }
+}

@@ -1,0 +1,15 @@
+.page-footer {
+  background-color: #363237;
+  width: 100%;
+}
+
+.page-footer__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-footer__social-item {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=Page-footer.css.map */
