@@ -2,6 +2,7 @@
 
 use ictis_portfolio\Router;
 
+Router::add('^projects/(?P<alias>[a-z0-9-]+)/?$', ['controller' => 'Project', 'action' => 'view']);
 
 //default routes
 Router::add('^admin$', ['controller' => 'Main', 'action' => 'index', 'prefix' => 'admin']);

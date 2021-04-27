@@ -13,13 +13,22 @@ class MainController extends AppController
          $news = \R::findAll('news');
          $mentors = \R::findAll('mentors');
          $best_projects = \R::findAll('projects');
-         //$category_project = \R::findAll('category_project');
+         $categories = \R::findAll('categories');
 
+         foreach($best_projects as $best_project)
+         {
+             $categories_id = \R::findAll('category_project', "id_project = $best_project->id");
 
+             $best_project['categories_id'] = [];
 
+             foreach($categories_id as $category_id)
+             {
+                 array_push($best_project['categories_id'], $category_id->id_category);
+             }
+         }
 
          $this->setMeta('Главная', 'Описание...', 'Ключевики...');
 
-         $this->set(compact('news', 'mentors', 'best_projects'));
+         $this->set(compact('news', 'mentors', 'best_projects', 'categories'));
      }
 }

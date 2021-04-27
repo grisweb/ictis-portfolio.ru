@@ -29,6 +29,7 @@
 
 .project-block__type-project {
   overflow: hidden;
+  flex-grow: 1;
 }
 
 .project-block__bottom-elements {
@@ -530,8 +531,7 @@
 
 .project-block--mobile {
   flex-direction: column;
-  flex: 0 0 32%;
-  min-width: 240px;
+  flex: 0 0 calc(33.333% - 20px);
   max-width: 360px;
 
   .project-block__image-wrapper {
@@ -586,15 +586,15 @@
   }
   
   @media (max-width: 1100px) {
-    flex: 0 0 48%;
+    flex: 0 0 calc(50% - 20px);
   }
   
   @media (max-width: 1000px) {
-    flex: 0 0 32%;
+    flex: 0 0 calc(33.33333% - 20px);
   }
   
   @media (max-width: 820px) {
-    flex: 0 0 48%;
+    flex: 0 0 calc(50% - 20px);
   }
 
   @media (max-width: 540px) {

@@ -36,33 +36,32 @@
         <?php foreach($best_projects as $project): ?>
         <li class="best-projects__item project-block project-block--best-projects">
             <div class="project-block__image-wrapper">
-                <img class="project-block__image" width="280" height="350" src="images/projects/<?= $project->id ?>/<?= $project->image ?>" alt="">
+                <a href="/projects/<?= $project->alias ?>">
+                    <img class="project-block__image" width="280" height="350" src="images/projects/<?= $project->id ?>/<?= $project->image ?>" alt="">
+                </a>
             </div>
             <div class="project-block__content-wrapper">
                 <div class="project-block__text-wrap">
-                    <h3 class="project-block__name"><a class="project-block__link" href=""><?= $project->name ?></a></h3>
+                    <h3 class="project-block__name"><a class="project-block__link" href="/projects/<?= $project->alias ?>"><?= $project->name ?></a></h3>
                     <p class="project-block__description">
                         <?= mb_substr($project->description, 0, 200) . '...' ?>
                     </p>
                 </div>
                 <div class="project-block__type-project type-project">
                     <div class="type-project__wrapper">
-                        <a href="#" class="type-project__item">Веб-сайт</a>
-                        <a href="#" class="type-project__item">Интернет-магазин</a>
-                        <a href="#" class="type-project__item">Мобильное приложение</a>
-                        <a href="#" class="type-project__item">Онлайн-рынок</a>
-                        <a href="#" class="type-project__item">Мессенджер</a>
-                        <a href="#" class="type-project__item">Компьютерная игра</a>
+                        <?php foreach($project->categories_id as $category_id): ?>
+                        <a href="#" class="type-project__item"><?= $categories[$category_id]->title ?></a>
+                        <?php endforeach; ?>
                     </div>
                 </div>
                 <div class="project-block__bottom-elements">
                     <div class="project-block__rating rating">
                         <div class="rating__body">
-                            <span class="rating__active" style="width: <?= $project->rating*20 ?>%"></span>
+                            <span class="rating__active" style="width: <?= $project->rating * 20 ?>%"></span>
                         </div>
                         <span class="rating__num-reviews"><?= $project->reviews_count ?> отзывов</span>
                     </div>
-                    <a href="" class="project-block__button button">Подробнее</a>
+                    <a href="/projects/<?= $project->alias ?>" class="project-block__button button">Подробнее</a>
                 </div>
             </div>
         </li>

@@ -34,7 +34,7 @@ class Cache
 
             if (time() <= $content['end_time'])
             {
-                return $content;
+                return $content['data'];
             }
 
             unlink($file);

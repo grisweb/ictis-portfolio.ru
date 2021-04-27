@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Главная</title>
+    <?= $this->getMeta(); ?>
+    <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/style.css">
@@ -12,10 +13,10 @@
     <div class="page-header__container container">
         <nav class="page-header__site-nav">
             <ul class="page-header__nav-list">
-                <li class="page-header__list-item"><a class="page-header__link" href="">Главная</a></li>
-                <li class="page-header__list-item"><a class="page-header__link" href="">Проекты</a></li>
-                <li class="page-header__list-item"><a class="page-header__link" href="">Новости</a></li>
-                <li class="page-header__list-item"><a class="page-header__link" href="">Наставники</a></li>
+                <li class="page-header__list-item"><a class="page-header__link" href="<?= PATH ?>">Главная</a></li>
+                <li class="page-header__list-item"><a class="page-header__link" href="<?= PATH . '/projects' ?>">Проекты</a></li>
+                <li class="page-header__list-item"><a class="page-header__link" href="<?= PATH . '/news' ?>">Новости</a></li>
+                <li class="page-header__list-item"><a class="page-header__link" href="<?= PATH . '/mentors' ?>">Наставники</a></li>
             </ul>
         </nav>
         <div class="page-header__search-wrapper"></div>
@@ -120,10 +121,11 @@
         </div>
     </div>
 </footer>
-<script src="../scripts/jquery-3.5.1.min.js"></script>
-<script src="../scripts/page-header.js"></script>
-<script src="../scripts/slick.min.js"></script>
-<script src="../scripts/slider.js"></script>
+<script src="scripts/jquery-3.5.1.min.js"></script>
+<script src="scripts/jquery.nice-select.min.js"></script>
+<script src="scripts/page-header.js"></script>
+<script src="scripts/slick.min.js"></script>
+<script src="scripts/slider.js"></script>
 <script src="scripts/projects.js"></script>
 <script src="scripts/project.js"></script>
 </body>

@@ -53,18 +53,27 @@
 }
 
 .projects-list__list {
+  position: relative;
   list-style: none;
   padding: 0;
-  margin: 20px 0 0;
-
+  margin: 20px -10px 0;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.projects-list__item {
-  margin-bottom: 20px;
+#fon {
+  display: none;
+  position: absolute;
+  opacity: 0.8;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
+
+.projects-list__item {
+  margin: 0 10px 20px 10px;
+}
+
 
 @media (max-width: 540px) {
   .projects-list__list {

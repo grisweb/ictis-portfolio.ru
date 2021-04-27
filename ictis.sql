@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 13 2021 г., 15:15
+-- Время создания: Апр 27 2021 г., 14:58
 -- Версия сервера: 8.0.19
 -- Версия PHP: 7.1.33
 
@@ -24,21 +24,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `category`
+-- Структура таблицы `categories`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE `categories` (
   `id` int NOT NULL,
   `title` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Дамп данных таблицы `category`
+-- Дамп данных таблицы `categories`
 --
 
-INSERT INTO `category` (`id`, `title`) VALUES
+INSERT INTO `categories` (`id`, `title`) VALUES
 (1, 'Веб-сайт'),
-(3, 'Интернет-магазин');
+(3, 'Интернет-магазин'),
+(5, 'Мобильное приложение');
 
 -- --------------------------------------------------------
 
@@ -47,17 +48,19 @@ INSERT INTO `category` (`id`, `title`) VALUES
 --
 
 CREATE TABLE `category_project` (
-  `id_project` int NOT NULL,
-  `id_category` int NOT NULL
+  `id` int NOT NULL,
+  `id_project` int UNSIGNED NOT NULL,
+  `id_category` int UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `category_project`
 --
 
-INSERT INTO `category_project` (`id_project`, `id_category`) VALUES
-(1, 1),
-(1, 3);
+INSERT INTO `category_project` (`id`, `id_project`, `id_category`) VALUES
+(1, 1, 1),
+(2, 1, 3),
+(3, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -104,8 +107,7 @@ CREATE TABLE `news` (
 INSERT INTO `news` (`id`, `title`, `content`, `image`, `date`) VALUES
 (1, 'Проектная деятельность в условиях распространения вируса COVID-19', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'covid.png', '2021-04-12 10:47:09'),
 (2, 'Проектная деятельность в условиях распространения вируса COVID-20', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'covid.png', '2021-04-12 10:47:15'),
-(3, 'Проектная деятельность в условиях распространения вируса COVID-21', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'covid.png', '2021-04-12 10:50:32'),
-(4, 'nenene', 'sdsdsdsdsd', 'rddsfdf.jpg', '2021-04-12 12:34:38');
+(3, 'Проектная деятельность в условиях распространения вируса COVID-21', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'covid.png', '2021-04-12 10:50:32');
 
 -- --------------------------------------------------------
 
@@ -115,19 +117,22 @@ INSERT INTO `news` (`id`, `title`, `content`, `image`, `date`) VALUES
 
 CREATE TABLE `projects` (
   `id` int NOT NULL,
+  `alias` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `reviews_count` int NOT NULL,
-  `rating` double NOT NULL
+  `rating` double NOT NULL,
+  `team` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `projects`
 --
 
-INSERT INTO `projects` (`id`, `name`, `image`, `description`, `reviews_count`, `rating`) VALUES
-(1, 'NekMarket', 'nekweb.png', 'NekMarket - это функционриующая платформа интернет-торговли. Сайт предоставляет лёгкий доступ продавцам для начала работы и прямого осуществления продаж. Достаточно будет лишь зарегистрироваться и заполнить основные данные. При этом для продавцов будут доступен удобный личный кабинет, в котором можно подготавливать информацию о новом товаре и в любой удобный момент публиковать новое предложение на платформе. Также есть возможность отслеживать статистику продаж, производить сравнение аналогов и использовать другие удобные функции.', 12, 4.5);
+INSERT INTO `projects` (`id`, `alias`, `name`, `image`, `description`, `reviews_count`, `rating`, `team`) VALUES
+(1, 'nekmarket', 'NekMarket', 'nekweb.png', 'NekMarket - это функционриующая платформа интернет-торговли. Сайт предоставляет лёгкий доступ продавцам для начала работы и прямого осуществления продаж. Достаточно будет лишь зарегистрироваться и заполнить основные данные. При этом для продавцов будут доступен удобный личный кабинет, в котором можно подготавливать информацию о новом товаре и в любой удобный момент публиковать новое предложение на платформе. Также есть возможность отслеживать статистику продаж, производить сравнение аналогов и использовать другие удобные функции.', 12, 4.5, 'NekWeb'),
+(2, 'test', 'Test', 'test.png', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis dolores exercitationem iusto pariatur quasi vero. Aspernatur assumenda consectetur doloribus et eveniet harum illum inventore, optio perspiciatis quod repudiandae veritatis!', 3, 2.5, 'TestTeam');
 
 -- --------------------------------------------------------
 
@@ -153,9 +158,15 @@ INSERT INTO `test` (`id`, `title`) VALUES
 --
 
 --
--- Индексы таблицы `category`
+-- Индексы таблицы `categories`
 --
-ALTER TABLE `category`
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `category_project`
+--
+ALTER TABLE `category_project`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -187,10 +198,16 @@ ALTER TABLE `test`
 --
 
 --
--- AUTO_INCREMENT для таблицы `category`
+-- AUTO_INCREMENT для таблицы `categories`
 --
-ALTER TABLE `category`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `categories`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT для таблицы `category_project`
+--
+ALTER TABLE `category_project`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `mentors`
@@ -208,7 +225,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT для таблицы `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `test`

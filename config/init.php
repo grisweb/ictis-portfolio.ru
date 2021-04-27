@@ -18,6 +18,3 @@ define("PATH", $app_path);
 define("ADMIN", PATH . '/admin');
 
 require_once ROOT . '/vendor/autoload.php';
-
-//моё-удалить
-require_once LIBS . '/rb.php';

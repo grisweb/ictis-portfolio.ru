@@ -1,31 +1,32 @@
 //Page
-@import "page/fonts.css";
-@import "page/standards.css";
-@import "page/page-header.css";
+@import "page/fonts";
+@import "page/standards";
+@import "page/page-header";
 @import "page/page-footer";
 
 //elements
 @import "elements/rating";
-@import "elements/button.css";
-@import "elements/project-block.css";
+@import "elements/button";
+@import "elements/project-block";
 @import "elements/check";
 @import "elements/nice-select";
-@import "elements/type-project.css";
+@import "elements/type-project";
 
 //home
 @import "home/slide-button";
-@import "home/slider-news.css";
-@import "home/slider-mentors.css";
-@import "home/slick.css";
+@import "home/slider-news";
+@import "home/slider-mentors";
+@import "home/slick";
 @import "home/best-projects";
 
 //Page-projects
-@import "page-projects/sidebar.css";
+@import "page-projects/sidebar";
 @import "page-projects/projects-list";
 @import "page-projects/projects-wrapper";
 
 //Page-project
 @import "page-project/project-wrapper";
-@import "page-project/project-cart.css";
+@import "page-project/project-cart";
 @import "page-project/project-tabs";
+
 
