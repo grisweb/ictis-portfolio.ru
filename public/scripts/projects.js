@@ -1,11 +1,97 @@
-$(document).ready(function() {
-    $('select').niceSelect();
+$('select').niceSelect();
 
-    $('.nice-select .option').on('click', function () {
-        if (!$(this).hasClass('selected')) {
-            $('#fon').css({'display':'block'});
-            //$.ajax();
+$(document).ready(function() {
+    $(document).on('click','.option', function () {
+        let data = this.getAttribute('data-value');
+
+        let sortURL = location.pathname + location.search.replace(/sort=(.+?)(&|$)/g, '');
+        sortURL = sortURL.replace('&&', '&');
+        sortURL = sortURL.replace('?&', '?');
+
+        $.ajax({
+            url: sortURL,
+            data: {sort: data},
+            type: 'GET',
+            beforeSend: function () {
+                $('#fon').css({'display': 'block'});
+            },
+            success: function (res) {
+                $('#fon').css({'display': 'none'});
+                $('.projects-list').html(res).fadeIn();
+
+                $('select').niceSelect();
+
+                let URL = location.search.replace(/sort=(.+?)(&|$)/g, '');
+                let newURL = location.pathname + URL + (location.search ? "&" : "?") + "sort=" + data;
+
+                newURL = newURL.replace('&&', '&');
+                newURL = newURL.replace('?&', '?');
+
+                history.pushState({}, '', newURL);
+            },
+        });
+    });
+
+    $(document).on('click', '.projects-list__view-btn',function () {
+        let data;
+        if ($(this).hasClass('view-list')) {
+            data = 'list';
+        } else {
+            data = 'grid';
         }
+
+        let viewURL = location.pathname + location.search.replace(/view=(.+?)(&|$)/g, '');
+
+        viewURL = viewURL.replace('&&', '&');
+        viewURL = viewURL.replace('?&', '?');
+
+        $.ajax({
+            url: viewURL,
+            data: {view: data},
+            type: 'GET',
+            beforeSend: function () {
+                $('#fon').css({'display': 'block'});
+            },
+            success: function (res) {
+                $('#fon').css({'display': 'none'});
+                $('.projects-list').html(res).fadeIn();
+
+                $('select').niceSelect();
+
+                let URL = location.search.replace(/view=(.+?)(&|$)/g, '');
+                let newURL = location.pathname + URL + (location.search ? "&" : "?") + "view=" + data;
+
+                newURL = newURL.replace('&&', '&');
+                newURL = newURL.replace('?&', '?');
+
+                history.pushState({}, '', newURL);
+            },
+        });
+    });
+
+    $(document).on('click', '.pagination .nav-link',function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: this.href,
+            type: 'GET',
+            beforeSend: function () {
+                $('#fon').css({'display': 'block'});
+            },
+            success: function (res) {
+                $('#fon').css({'display': 'none'});
+                $('.projects-list').html(res).fadeIn();
+                $('select').niceSelect();
+                window.scrollTo(0,0);
+
+                let URL = this.url;
+
+                URL = URL.replace('&&', '&');
+                URL = URL.replace('?&', '?');
+
+                history.pushState({}, '', URL);
+            },
+        });
     });
 
     $('body').on('change', '.sidebar .check__input', function () {
@@ -16,46 +102,74 @@ $(document).ready(function() {
             data += this.value + ',';
         });
 
-        if(data) {
+        let pageURL = location.pathname + location.search.replace(/page=(.+?)(&|$)/g, '');
+        pageURL = pageURL.replace('&&', '&');
+        pageURL = pageURL.replace('?&', '?');
+
+        if (data) {
             $.ajax({
-                url: location.href,
+                url: pageURL,
                 data: {filter: data},
                 type: 'GET',
                 beforeSend: function () {
-                    $('#fon').css({'display':'block'});
+                    $('#fon').css({'display': 'block'});
                 },
                 success: function (res) {
-                    $('#fon').css({'display':'none'});
-                    $('.projects-list__list').html(res).fadeIn();
-                    let URL = location.search.replace(/filter(.+?)(&|$)/g, '');
-                    let newURL = location.pathname + URL + (location.search ? "&" : "?") + "filter=" + data;
+                    $('#fon').css({'display': 'none'});
+                    $('.projects-list').html(res).fadeIn();
+                    $('select').niceSelect();
+
+                    data = data.slice(0, -1);
+
+                    let URL = location.search.replace(/filter=(.+?)(&|$)/g, '');
+                    let newURL = location.pathname + URL + (location.search ? "&" : "?") + 'filter=' + data;
 
                     newURL = newURL.replace('&&', '&');
                     newURL = newURL.replace('?&', '?');
-                    history.pushState({},'', newURL);
-                },
-                error: function () {
 
+                    newURL = newURL.replace(/page=(.+?)(&|$)/g, '');
+
+                    newURL = newURL.replace('&&', '&');
+                    newURL = newURL.replace('?&', '?');
+
+                    history.pushState({}, '', newURL);
+                    window.scrollTo(0,0);
                 }
             });
         } else {
-            window.location = location.pathname;
-        }
+            pageURL = location.pathname + location.search.replace(/filter=(.+?)(&|$)/g, '');
+            pageURL = pageURL.replace('&&', '&');
+            pageURL = pageURL.replace('?&', '?');
+            $.ajax({
+                url: pageURL,
+                type: 'GET',
+                beforeSend: function () {
+                    $('#fon').css({'display': 'block'});
+                },
+                success: function (res) {
+                    $('#fon').css({'display': 'none'});
+                    $('.projects-list').html(res).fadeIn();
+                    $('select').niceSelect();
 
-    });
+                    let URL = location.search.replace(/filter=(.+?)(&|$)/g, '');
+                    let newURL = location.pathname + URL;
 
+                    newURL = newURL.replace('&&', '&');
+                    newURL = newURL.replace('?&', '?');
 
-    $('.projects-list__view-btn').on('click', function () {
-        if (!$(this).hasClass('projects-list__view-btn--active')) {
-            $('.projects-list__view-btn--active').removeClass('projects-list__view-btn--active');
-            $(this).addClass('projects-list__view-btn--active');
-        }
+                    newURL = newURL.replace(/page=(.+?)(&|$)/g, '');
+                    newURL = newURL.replace('&&', '&');
+                    newURL = newURL.replace('?&', '?');
 
-        if ($(this).hasClass("view-list")) {
-            $('.project-block').removeClass('project-block--mobile').addClass('project-block--projects');
-        }
-        else {
-            $('.project-block').addClass('project-block--mobile').removeClass('project-block--projects');
+                    if(newURL.slice(-1)==='?' || newURL.slice(-1) === '&')
+                    {
+                        newURL = newURL.slice(0,-1);
+                    }
+
+                    history.pushState({}, '', newURL);
+                    window.scrollTo(0,0);
+                },
+            });
         }
     });
 

@@ -49,8 +49,8 @@
                 </div>
                 <div class="project-block__type-project type-project">
                     <div class="type-project__wrapper">
-                        <?php foreach($project->categories_id as $category_id): ?>
-                        <a href="#" class="type-project__item"><?= $categories[$category_id]->title ?></a>
+                        <?php foreach($project->categories as $category): ?>
+                        <a href="<?= '/projects?filter=' . $category->id ?>" class="type-project__item"><?= $category['title'] ?></a>
                         <?php endforeach; ?>
                     </div>
                 </div>

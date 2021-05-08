@@ -52,6 +52,11 @@
   }
 }
 
+.projects-list__list-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .projects-list__list {
   position: relative;
   list-style: none;
@@ -72,6 +77,10 @@
 
 .projects-list__item {
   margin: 0 10px 20px 10px;
+}
+
+.projects-list__null {
+  margin: 10px;
 }
 
 

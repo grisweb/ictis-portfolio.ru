@@ -1,4 +1,4 @@
-//Page
+//page
 @import "page/fonts";
 @import "page/standards";
 @import "page/page-header";
@@ -11,6 +11,7 @@
 @import "elements/check";
 @import "elements/nice-select";
 @import "elements/type-project";
+@import "elements/pagination";
 
 //home
 @import "home/slide-button";
@@ -19,14 +20,30 @@
 @import "home/slick";
 @import "home/best-projects";
 
-//Page-projects
+//page-projects
 @import "page-projects/sidebar";
 @import "page-projects/projects-list";
 @import "page-projects/projects-wrapper";
 
-//Page-project
+//page-project
 @import "page-project/project-wrapper";
 @import "page-project/project-cart";
 @import "page-project/project-tabs";
+@import "page-project/gallery";
+
+//page-news
+@import "page-news/news";
+
+//page-news-item
+@import "page-news-item/news-item";
+
+//page-mentors
+@import "page-mentors/mentors";
+
+//page-mentor
+@import "page-mentor/mentor";
+
+//authorization
+@import "authorization/login";
 
 

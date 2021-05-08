@@ -4,6 +4,8 @@
 namespace app\controllers;
 
 
+use app\models\ProjectModel;
+
 class ProjectController extends AppController
 {
     public function viewAction()
@@ -12,21 +14,16 @@ class ProjectController extends AppController
 
         $project = \R::findOne('projects', 'alias = ?', [$alias]);
 
-        $categories = \R::findAll('categories');
-
         if(!$project)
         {
             throw new \Exception('Страница не найдена!', 404);
         }
 
-        $categories_id = \R::findAll('category_project', "id_project = $project->id");
+        $project['gallery'] = \R::findAll('gallery', 'project_id = ?', [$project['id']]);
 
-        $project['categories_id'] = [];
+        $project['video'] = \R::findAll('video', 'project_id = ?', [$project['id']]);
 
-        foreach($categories_id as $category_id)
-        {
-            array_push($project['categories_id'], $category_id->id_category);
-        }
+        $project['categories'] = ProjectModel::getCategories($project['id']);
 
 
         $this->setMeta($project->name, $project->description, $project->name);

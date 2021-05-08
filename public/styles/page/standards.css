@@ -28,14 +28,14 @@ body {
   font-size: 36px;
 }
 
-.container {
+.project-container {
   padding: 0 30px;
   margin: 0 auto;
   max-width: 1200px;
 }
 
 @media (max-width: 900px) {
-  .container {
+  .project-container {
     padding: 0 15px;
   }
 
@@ -48,7 +48,7 @@ body {
   }
 }
 @media (max-width: 560px) {
-  .container {
+  .project-container {
     padding: 0;
   }
 }

@@ -31,10 +31,11 @@ body {
   height: 100%;
 }
 
-.container {
+.project-container {
   padding: 0 30px;
   margin: 0 auto;
   max-width: 1200px;
+  width: auto;
 }
 
 .page-main__wrapper {
@@ -43,7 +44,7 @@ body {
 }
 
 @media (max-width: 900px) {
-  .container {
+  .project-container {
     padding: 0 15px;
   }
 
@@ -57,7 +58,7 @@ body {
 }
 
 @media (max-width: 560px) {
-  .container {
+  .project-container {
     padding: 0;
   }
 }

@@ -6,11 +6,13 @@
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="styles/jquery.fancybox.min.css">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 <header class="page-header">
-    <div class="page-header__container container">
+    <div class="page-header__container project-container">
         <nav class="page-header__site-nav">
             <ul class="page-header__nav-list">
                 <li class="page-header__list-item"><a class="page-header__link" href="<?= PATH ?>">Главная</a></li>
@@ -24,7 +26,7 @@
             <button class="page-header__toggle-nav">
                 <span></span>
             </button>
-            <a href="" class="page-header__log-in page-header__link">
+            <a href class="page-header__log-in page-header__link">
                 <svg class="page-header__log-in-icon" height="20px" viewBox="0 0 512 512" width="20px" xmlns="http://www.w3.org/2000/svg">
                     <path d="m465.535156.320312c-.53125-.042968-.980468-.320312-1.535156-.320312h-229.332031c-35.285157
                      0-64 28.714844-64 64v21.332031c0 11.777344 9.554687 21.335938 21.332031 21.335938s21.332031-9.558594
@@ -47,7 +49,7 @@
     </div>
 </header>
 <main class="page-main">
-    <div class="page-main__container container">
+    <div class="page-main__container project-container">
         <div class="page-main__wrapper">
          <?= $content; ?>
         </div>
@@ -55,7 +57,7 @@
 </main>
 
 <footer class="page-footer">
-    <div class="page-footer__container container">
+    <div class="page-footer__container project-container">
         <div class="page-footer__copyright">
             UnioWeb © 2021
         </div>
@@ -121,6 +123,34 @@
         </div>
     </div>
 </footer>
+<div class="login">
+    <div class="login__window">
+        <div class="login__close">
+            <button class="login__button-close">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" style="width: 35px">
+                    <defs><style>.cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:3px;}</style></defs>
+                    <g id="cross"><line class="cls-1" x1="7" x2="25" y1="7" y2="25"/><line class="cls-1" x1="7" x2="25" y1="25" y2="7"/></g>
+                </svg>
+            </button>
+        </div>
+        <h2 class="login__title">Вход</h2>
+        <form class="login__form" action="login" method="post">
+            <div class="login__field">
+                <label for="">
+                    <span class="login__label-text">Логин</span>
+                    <input class="login__input" type="text">
+                </label>
+            </div>
+            <div class="login__field">
+                <label class="login__label" for="">
+                    <span class="login__label-text">Пароль</span>
+                    <input class="login__input" type="password">
+                </label>
+            </div>
+            <button class="button login__button" type="submit">Войти</button>
+        </form>
+    </div>
+</div>
 <script src="scripts/jquery-3.5.1.min.js"></script>
 <script src="scripts/jquery.nice-select.min.js"></script>
 <script src="scripts/page-header.js"></script>
@@ -128,5 +158,6 @@
 <script src="scripts/slider.js"></script>
 <script src="scripts/projects.js"></script>
 <script src="scripts/project.js"></script>
+<script src="scripts/jquery.fancybox.min.js"></script>
 </body>
 </html>
